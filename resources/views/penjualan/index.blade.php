@@ -76,8 +76,12 @@
                         </td>
 
                         <td>
-                            <div class="text-white fw-medium">{{ $sale->created_at->format('d/m/Y') }}</div>
-                            <div class="text-secondary opacity-75" style="font-size: 0.75rem;">{{ $sale->created_at->format('H:i') }} WIB</div>
+                            <div class="text-white fw-medium">
+                                {{ $sale->created_at->timezone('Asia/Jakarta')->format('d/m/Y') }}
+                            </div>
+                            <div class="text-secondary opacity-75" style="font-size: 0.75rem;">
+                                {{ $sale->created_at->timezone('Asia/Jakarta')->format('H:i') }} WIB
+                            </div>
                         </td>
 
                         <td>
@@ -147,7 +151,7 @@
                             </div>
                         </td>
                     </tr>
-                    @endforelse
+                    @endempty
                 </tbody>
             </table>
         </div>

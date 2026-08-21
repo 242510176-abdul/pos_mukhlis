@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-primary border-opacity-25 py-2" style="background-color: #0f172a;">
     <div class="container" style="max-width: 1200px;">
-        <a class="navbar-brand fw-bold text-white fs-4 d-flex align-items-center gap-2" href="#">
+        <a class="navbar-brand fw-bold text-white fs-4 d-flex align-items-center gap-2" href="{{ route('dashboard') }}">
             SecondThrift
         </a>
 
@@ -18,7 +18,7 @@
 
                 @if(auth()->check() && strtolower(auth()->user()->role->name) === 'admin')
                 <li class="nav-item">
-                    <a class="nav-link px-3 py-2 rounded-2 fw-semibold {{ Request::is('admin/users') ? 'active text-white bg-primary bg-opacity-25' : 'text-secondary' }}" href="{{ route('admin.users') }}">
+                    <a class="nav-link px-3 py-2 rounded-2 fw-semibold {{ Request::is('admin/users*') ? 'active text-white bg-primary bg-opacity-25' : 'text-secondary' }}" href="{{ route('admin.users') }}">
                         Users
                     </a>
                 </li>
@@ -33,6 +33,13 @@
                 <li class="nav-item">
                     <a class="nav-link px-3 py-2 rounded-2 fw-semibold {{ Request::is('penjualan*') ? 'active text-white bg-primary bg-opacity-25' : 'text-secondary' }}" href="{{ route('penjualan.index') }}">
                         Penjualan
+                    </a>
+                </li>
+
+                <!-- FIX: Mengarahkan ke route('tentang.index') -->
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 rounded-2 fw-semibold {{ Request::is('tentang*') ? 'active text-white bg-primary bg-opacity-25' : 'text-secondary' }}" href="{{ route('tentang.index') }}">
+                        Tentang
                     </a>
                 </li>
             </ul>

@@ -12,20 +12,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // GABUNGKAN KEDUA FUNGSI INDEX MENJADI SATU SEPERTI INI:
     public function index(SearchRequest $request)
     {
         $keyword = $request->input('search');
 
-        if ($keyword) {
-            // Jika ada keyword, gunakan pencarian FullText
-            $users = User::whereRaw("MATCH(name, email) AGAINST(? IN BOOLEAN MODE)", [$keyword])
-                ->paginate(10)
-                ->withQueryString();
-        } else {
-            // Jika tidak ada keyword, tampilkan data terbaru (latest)
-            $users = User::latest()->paginate(10)->withQueryString();
-        }
+        // Pencarian menggunakan LIKE yang kompatibel dengan SQLite & MySQL
+        $users = User::when($keyword, function ($query, $keyword) {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%")
+                  ->orWhere('email', 'like', "%{$keyword}%");
+            });
+        })
+        ->latest()
+        ->paginate(10)
+        ->withQueryString();
 
         return view('users.index', compact('users'));
     }

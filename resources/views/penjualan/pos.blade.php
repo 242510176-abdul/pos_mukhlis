@@ -154,7 +154,7 @@ body{
                                 name="search"
                                 value="{{ request('search') }}"
                                 class="form-control pos-search-input"
-                                placeholder="Cari koleksi sepatu..."
+                                placeholder="Cari koleksi produk..."
                                 onkeyup="this.form.submit()">
                         </form>
                     </div>
@@ -180,7 +180,7 @@ body{
 
                                         <div>
                                             <div class="fw-bold" style="color: #4a3540; font-size: 0.95rem;">{{ $product->nama }}</div>
-                                            <small style="color: #be123c; font-weight: 700;">
+                                            <small style="color: #2306f8; font-weight: 700;">
                                                 Rp {{ number_format($product->harga_jual, 0, ',', '.') }}
                                             </small>
                                         </div>
@@ -244,7 +244,7 @@ body{
                                                    onchange="this.form.submit()">
                                         </form>
                                     </td>
-                                    <td class="fw-bold" style="color: #be123c;">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
+                                    <td class="fw-bold" style="color: #0927e4;">Rp {{ number_format($item->subtotal, 0, ',', '.') }}</td>
                                     <td class="text-center">
                                         @can('delete', $item)
                                         <form method="POST" action="{{ route('itempenjualan.destroy', $item->id) }}">

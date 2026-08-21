@@ -6,201 +6,224 @@
 
 @include('layouts.navbar')
 
-<!-- Tambahkan CDN Google Fonts & FontAwesome untuk nuansa feminim dan elegan -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <style>
-body {
-    background: linear-gradient(135deg, #fdf6f9, #f4e8ee);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: #4a3540;
-}
+    .detail-page {
+        padding: 40px 15px;
+        background: #f4f8ff;
+        min-height: 100vh;
+    }
 
-/* Dekorasi background mewah yang lembut */
-body::before {
-    content: "";
-    position: fixed;
-    width: 350px;
-    height: 350px;
-    background: #fbcfe8;
-    border-radius: 50%;
-    top: -100px;
-    left: -100px;
-    opacity: 0.3;
-    filter: blur(70px);
-    z-index: -1;
-}
+    .detail-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-body::after {
-    content: "";
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: #fecdd3;
-    border-radius: 50%;
-    bottom: -150px;
-    right: -150px;
-    opacity: 0.3;
-    filter: blur(80px);
-    z-index: -1;
-}
+    .detail-header h1 {
+        color: #1e3a8a;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
 
-/* CONTAINER & CARD STYLING */
-.detail-product-container {
-    max-width: 650px;
-    margin: 40px auto;
-}
+    .detail-header p {
+        color: #64748b;
+        margin: 0;
+    }
 
-.detail-aesthetic-card {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    border-radius: 30px;
-    border: 1px solid rgba(254, 205, 211, 0.4);
-    box-shadow: 0 15px 35px rgba(225, 29, 72, 0.08);
-    overflow: hidden;
-    width: 100% !important; /* Mengubah ukuran card bawaan agar lebih proporsional & mewah */
-}
+    .detail-card {
+        max-width: 850px;
+        margin: auto;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #dbeafe;
+        box-shadow: 0 4px 15px rgba(30, 64, 175, 0.08);
+    }
 
-.detail-header-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #4a3540;
-}
+    .detail-image {
+        background: #eff6ff;
+        text-align: center;
+        padding: 30px;
+    }
 
-.detail-img-wrapper {
-    background: #fff5f7;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #fff1f2;
-}
+    .detail-image img {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        object-fit: contain;
+    }
 
-.detail-img-wrapper img {
-    max-height: 280px;
-    object-fit: contain;
-    border-radius: 20px;
-    transition: transform 0.4s ease;
-}
+    .detail-content {
+        padding: 30px;
+    }
 
-.detail-img-wrapper img:hover {
-    transform: scale(1.05);
-}
+    .detail-content h2 {
+        color: #1e3a8a;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
 
-.detail-card-body {
-    padding: 35px;
-}
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
 
-.detail-title-nama {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #4a3540;
-    margin-bottom: 20px;
-}
+    .detail-row:last-child {
+        border-bottom: none;
+    }
 
-.detail-info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px dashed #fbe8ee;
-    font-size: 0.95rem;
-}
+    .detail-label {
+        color: #64748b;
+        font-size: 14px;
+    }
 
-.detail-info-label {
-    color: #885d6e;
-    font-weight: 600;
-}
+    .detail-label i {
+        color: #2563eb;
+        width: 22px;
+    }
 
-.detail-info-value {
-    color: #4a3540;
-    font-weight: 700;
-}
+    .detail-value {
+        color: #1e293b;
+        font-weight: 600;
+        text-align: right;
+    }
 
-.detail-price-highlight {
-    color: #be123c !important;
-    font-size: 1.1rem;
-}
+    .price {
+        color: #2563eb;
+        font-size: 19px;
+    }
 
-/* TOMBOL KEMBALI */
-.btn-back-aesthetic {
-    background: #f43f5e;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 12px;
-    font-weight: 700;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.2);
-}
+    .stock {
+        background: #dbeafe;
+        color: #1d4ed8;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+    }
 
-.btn-back-aesthetic:hover {
-    background: #e11d48;
-    color: white;
-    transform: translateY(-2px);
-}
+    .btn-back {
+        display: block;
+        text-align: center;
+        background: #2563eb;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-top: 25px;
+        font-weight: 600;
+    }
+
+    .btn-back:hover {
+        background: #1d4ed8;
+        color: white;
+    }
+
+    @media (min-width: 768px) {
+        .detail-card {
+            display: grid;
+            grid-template-columns: 45% 55%;
+        }
+
+        .detail-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .detail-content {
+            padding: 20px;
+        }
+
+        .detail-row {
+            gap: 15px;
+        }
+    }
 </style>
 
-<div class="container detail-product-container">
+<div class="detail-page">
 
-    <div class="text-center mb-4">
-        <h1 class="detail-header-title">
-            <i class="fa-solid fa-gem me-2" style="color: #be123c;"></i> Halaman Detail Produk
+    <div class="detail-header">
+        <h1>
+            <i class="fa-solid fa-shoe-prints"></i>
+            Detail Produk
         </h1>
-        <p style="color: #885d6e;">Informasi lengkap koleksi sepatu SPTYSTORE</p>
+        <p>Informasi lengkap produk sepatu Second Thrift</p>
     </div>
 
-    <!-- Mempertahankan struktur class="card" tapi dipercantik dengan class tambahan detail-aesthetic-card -->
-    <div class="card detail-aesthetic-card mx-auto">
-        
-        <div class="detail-img-wrapper">
-            <img src="{{ asset('storage/' . $produk->foto) }}" class="card-img-top" alt="{{ $produk->nama }}">
+    <div class="detail-card">
+
+        {{-- Foto Produk --}}
+        <div class="detail-image">
+            <img
+                src="{{ asset('storage/' . $produk->foto) }}"
+                alt="{{ $produk->nama }}"
+            >
         </div>
 
-        <div class="card-body detail-card-body">
-            
-            <h5 class="card-title detail-title-nama">
-                {{ $produk->nama }}
-            </h5>
+        {{-- Informasi Produk --}}
+        <div class="detail-content">
 
-            <div class="mb-4">
-                <div class="detail-info-row">
-                    <span class="detail-info-label"><i class="fa-solid fa-tag me-2 text-pink"></i> Harga Dasar</span>
-                    <span class="detail-info-value">Rp {{ number_format($produk->harga_beli, 0, ',', '.') }}</span>
-                </div>
+            <h2>{{ $produk->nama }}</h2>
 
-                <div class="detail-info-row">
-                    <span class="detail-info-label"><i class="fa-solid fa-tags me-2" style="color: #be123c;"></i> Harga Jual</span>
-                    <span class="detail-info-value detail-price-highlight">Rp {{ number_format($produk->harga_jual, 0, ',', '.') }}</span>
-                </div>
+            <div class="detail-row">
+                <span class="detail-label">
+                    <i class="fa-solid fa-tag"></i>
+                    Harga Dasar
+                </span>
 
-                <div class="detail-info-row">
-                    <span class="detail-info-label"><i class="fa-solid fa-boxes-stacked me-2 text-pink"></i> Stok</span>
-                    <span class="detail-info-value">
-                        <span class="badge rounded-pill px-3 py-2" style="background: #ffe4e6; color: #9f1239;">
-                            {{ $produk->stok }} Psg
-                        </span>
-                    </span>
-                </div>
-
-                <div class="detail-info-row border-0">
-                    <span class="detail-info-label"><i class="fa-solid fa-user-pen me-2 text-pink"></i> Penginput</span>
-                    <span class="detail-info-value" style="color: #885d6e;">{{ $produk->user->name }}</span>
-                </div>
+                <span class="detail-value">
+                    Rp {{ number_format($produk->harga_beli, 0, ',', '.') }}
+                </span>
             </div>
 
-            <a href="{{ route('produk.index') }}" class="btn btn-primary btn-back-aesthetic w-100">
-                <i class="fa-solid fa-arrow-left"></i> Kembali ke Katalog
+            <div class="detail-row">
+                <span class="detail-label">
+                    <i class="fa-solid fa-tags"></i>
+                    Harga Jual
+                </span>
+
+                <span class="detail-value price">
+                    Rp {{ number_format($produk->harga_jual, 0, ',', '.') }}
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="detail-label">
+                    <i class="fa-solid fa-box"></i>
+                    Stok
+                </span>
+
+                <span class="detail-value">
+                    <span class="stock">
+                        {{ $produk->stok }} Pasang
+                    </span>
+                </span>
+            </div>
+
+            <div class="detail-row">
+                <span class="detail-label">
+                    <i class="fa-solid fa-user"></i>
+                    Penginput
+                </span>
+
+                <span class="detail-value">
+                    {{ $produk->user->name }}
+                </span>
+            </div>
+
+            <a href="{{ route('produk.index') }}" class="btn-back">
+                <i class="fa-solid fa-arrow-left me-2"></i>
+                Kembali ke Katalog
             </a>
 
         </div>
+
     </div>
 
 </div>

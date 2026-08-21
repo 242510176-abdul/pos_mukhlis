@@ -27,6 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    // Route Halaman Tentang
+    Route::get('/tentang', function () {
+        return view('tentang');
+    })->name('tentang.index');
+
     // Group Khusus Role: Admin
     Route::middleware('role:admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->name('users'); 
