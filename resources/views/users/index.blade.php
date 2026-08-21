@@ -44,13 +44,13 @@
                             <span class="input-group-text bg-transparent border-0 text-slate-400 ps-3">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
-                            <input 
-                                type="text" 
-                                name="search" 
-                                value="{{ request('search') }}" 
-                                class="form-control bg-transparent border-0 text-white shadow-none py-2" 
-                                placeholder="Cari berdasarkan nama atau alamat email staf..."
-                            >
+                           <input 
+    type="text" 
+    name="search" 
+    value="{{ request('search') }}" 
+    class="form-control bg-transparent border-0 shadow-none py-2 input-search-white" 
+    placeholder="Cari berdasarkan nama atau alamat email staf..."
+>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -144,6 +144,17 @@
 </div>
 
 <style>
+
+    /* Style khusus untuk membuat placeholder berwarna putih terang */
+.input-search-white::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; /* Putih terang dengan sedikit efek soft */
+    opacity: 1; /* Diperlukan untuk browser Firefox */
+}
+
+/* Warna saat difokuskan / diketik */
+.input-search-white {
+    color: #ffffff !important;
+}
     /* ===== THEME: MASCULINE DARK STREETWEAR ===== */
     :root {
         --bg-main: #0b0f17;

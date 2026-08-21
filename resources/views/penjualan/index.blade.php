@@ -40,12 +40,12 @@
             <form action="{{ route('penjualan.index') }}" method="GET">
                 <div class="input-group">
                     <input 
-                        type="text"
-                        name="search"
-                        value="{{ request()->search }}"
-                        class="form-control border-0 bg-transparent text-white shadow-none ps-3"
-                        placeholder="Cari berdasarkan nama kasir atau metode pembayaran..."
-                    >
+    type="text"
+    name="search"
+    value="{{ request()->search }}"
+    class="form-control border-0 bg-transparent text-white shadow-none ps-3 input-search-white"
+    placeholder="Cari berdasarkan nama kasir atau metode pembayaran..."
+>
                     <button type="submit" class="btn btn-secondary bg-secondary bg-opacity-25 border-0 text-white px-4 fw-semibold rounded-2">
                         Cari
                     </button>
@@ -164,6 +164,16 @@
 </div>
 
 <style>
+    /* Mengubah warna teks placeholder menjadi putih */
+.input-search-white::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; /* Warna putih soft */
+    opacity: 1; /* Diperlukan agar warna solid di browser Firefox */
+}
+
+/* Memastikan teks yang diketik tetap putih */
+.input-search-white {
+    color: #ffffff !important;
+}
     body {
         background-color: #0b0f19;
         font-family: 'Plus Jakarta Sans', sans-serif;
