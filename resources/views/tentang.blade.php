@@ -26,6 +26,37 @@
             color: #ffffff !important;
             background-color: rgba(59, 130, 246, 0.15);
         }
+
+        /* --- STYLES ANIMASI 3D PROFILE --- */
+        .profile-card-3d {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: box-shadow 0.3s ease;
+        }
+        .profile-card-3d:hover {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
+        }
+        .profile-img-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+            transform: translateZ(30px); /* Efek pop-out 3D */
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .profile-content {
+            transform: translateZ(20px); /* Melayang di atas card */
+        }
     </style>
 </head>
 <body>
@@ -102,6 +133,25 @@
             </p>
         </div>
 
+        <!-- SECTION PROFIL PRIBADI ANIMASI 3D -->
+        <div class="card profile-card-3d p-4 mb-4 text-center" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+            <div class="profile-img-container mb-3">
+                <!-- Ganti URL di bawah dengan lokasi foto kamu -->
+                <img src="{{ asset('img/logo.jpg') }}" alt="Foto Profil" class="profile-img">
+            </div>
+            <div class="profile-content">
+                <h4 class="fw-bold text-white mb-1">Abdul Mukhlis</h4>
+                <p class="text-primary fw-semibold mb-2">Lead Developer & Designer</p>
+                <p class="text-secondary fs-7 mx-auto mb-3" style="max-width: 600px;">
+                    "Pengembang aplikasi SecondThrift POS. Berfokus pada pembangunan sistem transaksi yang responsif, modern, dan mudah digunakan."
+                </p>
+                <div class="d-flex justify-content-center gap-2">
+                    <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fs-7">Fullstack Dev</span>
+                    <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill fs-7">UI/UX Designer</span>
+                </div>
+            </div>
+        </div>
+
         <!-- Details Grid -->
         <div class="row g-4 mb-4">
             <!-- Card 1 -->
@@ -174,5 +224,8 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Vanilla Tilt JS untuk Animasi 3D Card -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </body>
 </html>
