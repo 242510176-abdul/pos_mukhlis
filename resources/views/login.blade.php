@@ -60,15 +60,31 @@
     .custom-input-group .input-group-text {
         background-color: rgba(255, 255, 255, 0.08) !important;
         border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-right: none !important;
         color: #38bdf8 !important;
+    }
+
+    .custom-input-group .input-group-text.prepend-icon {
+        border-right: none !important;
+    }
+
+    .custom-input-group .toggle-password {
+        border-left: none !important;
+        cursor: pointer;
     }
 
     .custom-input-group .form-control {
         background-color: rgba(255, 255, 255, 0.08) !important;
         border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-left: none !important;
         color: #ffffff !important;
+    }
+
+    .custom-input-group .form-control.input-email {
+        border-left: none !important;
+    }
+
+    .custom-input-group .form-control.input-password {
+        border-left: none !important;
+        border-right: none !important;
     }
 
     .custom-input-group .form-control::placeholder {
@@ -117,11 +133,11 @@
                 <div class="mb-3">
                     <label for="email" class="form-label text-light small fw-bold text-uppercase" style="letter-spacing: 0.5px;">Email</label>
                     <div class="input-group custom-input-group">
-                        <span class="input-group-text">
+                        <span class="input-group-text prepend-icon">
                             <i class="bi bi-envelope"></i>
                         </span>
                         <input type="email" id="email" name="email" 
-                               class="form-control @error('email') is-invalid @enderror" 
+                               class="form-control input-email @error('email') is-invalid @enderror" 
                                placeholder="nama@email.com" value="{{ old('email') }}" required autofocus>
                     </div>
                     @error('email')
@@ -134,12 +150,15 @@
                 <div class="mb-4">
                     <label for="password" class="form-label text-light small fw-bold text-uppercase" style="letter-spacing: 0.5px;">Password</label>
                     <div class="input-group custom-input-group">
-                        <span class="input-group-text">
+                        <span class="input-group-text prepend-icon">
                             <i class="bi bi-lock"></i>
                         </span>
                         <input type="password" id="password" name="password" 
-                               class="form-control @error('password') is-invalid @enderror" 
+                               class="form-control input-password @error('password') is-invalid @enderror" 
                                placeholder="••••••••" required>
+                        <span class="input-group-text toggle-password" id="togglePassword">
+                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                        </span>
                     </div>
                     @error('password')
                         <div class="invalid-feedback d-block mt-1" style="color: #f87171;">
@@ -158,5 +177,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+    });
+</script>
 
 @endsection

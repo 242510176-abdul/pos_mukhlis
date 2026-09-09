@@ -140,7 +140,8 @@
                 <img src="{{ asset('img/logo.jpg') }}" alt="Foto Profil" class="profile-img">
             </div>
             <div class="profile-content">
-                <h4 class="fw-bold text-white mb-1">Abdul Mukhlis</h4>
+                <h4 class="fw-bold text-white mb-1">ABDUL MUKHLIS</h4>
+                <h5 class="fw-bold text-white mb-1">Siswa SMK Negeri 4 Tasikmalaya</h5>
                 <p class="text-primary fw-semibold mb-2">Lead Developer & Designer</p>
                 <p class="text-secondary fs-7 mx-auto mb-3" style="max-width: 600px;">
                     "Pengembang aplikasi SecondThrift POS. Berfokus pada pembangunan sistem transaksi yang responsif, modern, dan mudah digunakan."
