@@ -171,6 +171,12 @@
 
             <h2>{{ $produk->nama }}</h2>
 
+            {{-- HARGA DASAR HANYA TAMPIL UNTUK ADMIN --}}
+            @php
+                $userRole = strtolower(auth()->user()->role->name ?? auth()->user()->role ?? '');
+            @endphp
+
+            @if(auth()->check() && in_array($userRole, ['admin', 'superadmin', 'administrator']))
             <div class="detail-row">
                 <span class="detail-label">
                     <i class="fa-solid fa-tag"></i>
@@ -181,6 +187,7 @@
                     Rp {{ number_format($produk->harga_beli, 0, ',', '.') }}
                 </span>
             </div>
+            @endif
 
             <div class="detail-row">
                 <span class="detail-label">

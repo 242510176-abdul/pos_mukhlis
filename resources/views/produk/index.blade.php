@@ -111,9 +111,17 @@
                             <div class="vault-price">
                                 Rp {{ number_format($product->harga_jual, 0, ',', '.') }}
                             </div>
-                            <div class="vault-modal">
-                                Modal: Rp {{ number_format($product->harga_beli, 0, ',', '.') }}
-                            </div>
+                            
+                            {{-- PENGECEKAN ROLE TERLINDUNGI LENGKAP --}}
+                            @php
+                                $roleName = strtolower(auth()->user()->role->name ?? auth()->user()->role ?? '');
+                            @endphp
+
+                            @if (auth()->check() && in_array($roleName, ['admin', 'superadmin', 'administrator']))
+                                <div class="vault-modal">
+                                    Modal: Rp {{ number_format($product->harga_beli, 0, ',', '.') }}
+                                </div>
+                            @endif
                         </div>
 
                         <div class="vault-action-group mt-auto pt-3">
